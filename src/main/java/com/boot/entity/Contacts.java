@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 /**
  * Contact entity
@@ -25,15 +27,23 @@ public class Contacts implements Serializable {
 	@Column(name = "contact_id")
 	private Integer contactId;
 	@Column(name = "name")
+	@Size(min = 4, max = 30, message = "This is required field min 4 symbols")
 	private String name;
 	@Column(name = "surname")
+	@Size(min = 4, max = 30, message = "This is required field min 4 symbols")
 	private String surname;
 	@Column(name = "middlename")
+	@Size(min = 4, max = 30, message = "This is required field min 4 symbols")
 	private String middlename;
 	@Column(name = "homephone")
 	private String homephone;
 	@Column(name = "mobilephone")
+	@Pattern(regexp = "[+]{1}380[0-9]{9}", message = "Invalid phone format, should be as +380xxxxxxxxx")
 	private String mobilephone;
+	@Column(name = "email")
+	@Pattern(regexp = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+			+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$", message = "Invalid email")
+	private String email;
 	@Column(name = "workphone")
 	private String workphone;
 	@Column(name = "address")
@@ -93,6 +103,14 @@ public class Contacts implements Serializable {
 		this.mobilephone = mobilephone;
 	}
 
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	public String getWorkphone() {
 		return workphone;
 	}
@@ -123,6 +141,7 @@ public class Contacts implements Serializable {
 		int result = 1;
 		result = prime * result + ((address == null) ? 0 : address.hashCode());
 		result = prime * result + ((contactId == null) ? 0 : contactId.hashCode());
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((homephone == null) ? 0 : homephone.hashCode());
 		result = prime * result + ((middlename == null) ? 0 : middlename.hashCode());
 		result = prime * result + ((mobilephone == null) ? 0 : mobilephone.hashCode());
@@ -151,6 +170,11 @@ public class Contacts implements Serializable {
 			if (other.contactId != null)
 				return false;
 		} else if (!contactId.equals(other.contactId))
+			return false;
+		if (email == null) {
+			if (other.email != null)
+				return false;
+		} else if (!email.equals(other.email))
 			return false;
 		if (homephone == null) {
 			if (other.homephone != null)
@@ -193,8 +217,9 @@ public class Contacts implements Serializable {
 	@Override
 	public String toString() {
 		return "Contacts [contactId=" + contactId + ", name=" + name + ", surname=" + surname + ", middlename="
-				+ middlename + ", homephone=" + homephone + ", mobilephone=" + mobilephone + ", workphone=" + workphone
-				+ ", address=" + address + ", userId=" + userId + "]";
+				+ middlename + ", homephone=" + homephone + ", mobilephone=" + mobilephone + ", email=" + email
+				+ ", workphone=" + workphone + ", address=" + address + ", userId=" + userId + "]";
 	}
 
+	
 }

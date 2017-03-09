@@ -10,6 +10,7 @@ CREATE TABLE contacts
 	mobilephone  CHAR(18) NOT NULL,
 	workphone  CHAR(18) NULL,
 	address  CHAR(40) NULL,
+	email CHAR(30) NULL,
 	PRIMARY KEY (contact_id)
 )
 ;
@@ -22,12 +23,8 @@ CREATE TABLE users
 	name  TEXT NOT NULL,
 	surname  CHAR(18) NULL,
 	middlename  CHAR(18) NULL,
-	phone  CHAR(12) NOT NULL,
-	homephone  CHAR(18) NULL,
-	email  CHAR(18) NULL,
 	login  VARCHAR(30) NOT NULL,
 	password  VARCHAR(50) NOT NULL,
-	address  CHAR(18) NULL,
 	PRIMARY KEY (user_id)
 	
 )

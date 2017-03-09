@@ -23,15 +23,12 @@ public class UserRepositoryTest {
 		user1 = new Users();
 		user1.setUserId(1);
 		user1.setSurname("Surname");
-		user1.setEmail("email@gmail.com");
-		user1.setPhone("1234567890");
 		user1.setPassword("password");
 		user1.setLogin("login");
 		
 		user2 = new Users();
 		user2.setUserId(2);
 		user2.setSurname("Surname2");
-		user2.setPhone("1111111111");
 		user2.setLogin("mylogin");
 		when(userRepository.findByLogin("mylogin")).thenReturn(user2);
 		when(userRepository.findByLoginAndPassword("login", "password")).thenReturn(user1);

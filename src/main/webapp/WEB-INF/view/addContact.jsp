@@ -34,20 +34,27 @@
 					<div class="box">
 						<div class="content-wrap">
 							<form:form modelAttribute="newContact">
-								<label>Name</label>
-								<form:input class="form-control" path="name"/>
+								<label>Name*</label>
+								<form:input class="form-control" path="name" />
+								<form:errors path="name"></form:errors>
 
-								<label>Surname</label>
+								<label>Surname*</label>
 								<form:input class="form-control" path="surname" />
+								<form:errors path="surname"></form:errors>
 
-								<label>Middlename</label>
+								<label>Middlename*</label>
 								<form:input class="form-control" path="middlename" />
+
+								<label>Email</label>
+								<form:input class="form-control" path="email" />
+								<form:errors path="email"></form:errors>
 
 								<label>Work Phone</label>
 								<form:input class="form-control" path="workphone" />
 
-								<label>Mobile Phone</label>
+								<label>Mobile Phone*</label>
 								<form:input class="form-control" path="mobilephone" />
+								<form:errors path="mobilephone"></form:errors>
 
 								<label>Homephone</label>
 								<form:input class="form-control" path="homephone" />
@@ -58,8 +65,9 @@
 
 								<div class="action">
 									<button type="submit" class="btn btn-primary signup">
-										<c:if test="${editing}">Edit contact</c:if><c:if test="${adding }">Add new contact</c:if>
-										</button>
+										<c:if test="${editing}">Edit contact</c:if>
+										<c:if test="${adding }">Add new contact</c:if>
+									</button>
 								</div>
 							</form:form>
 						</div>

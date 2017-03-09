@@ -38,26 +38,15 @@
 							<label>Password*</label>
 							<form:input class="form-control" path="password"/>
 							<form:errors path="password"></form:errors>
-							<label>Email</label>
-							<form:input class="form-control" path="email"/>
-							<form:errors path="email"></form:errors>
 							<label>Name*</label>
 							<form:input class="form-control" path="name"/>
 							<form:errors path="name"></form:errors>
-							<label>Phone*</label>
-							<form:input class="form-control" path="phone"/>
-							<form:errors path="phone"></form:errors>
-							<label>Surname</label>
+							<label>Surname*</label>
 							<form:input class="form-control" path="surname"/>
 							<form:errors path="surname"></form:errors>
-							<label>Middlename</label>
+							<label>Middlename*</label>
 							<form:input class="form-control" path="middlename"/>
 							<form:errors path="middlename"></form:errors>
-							<label>Address</label>
-							<form:input class="form-control" path="address"/>
-							<label>Homephone</label>
-							<form:input class="form-control" path="homephone"/>
-							<form:errors path="homephone"></form:errors>
 								
 								<div class="action">
 									<button type="submit" class="btn btn-primary signup">

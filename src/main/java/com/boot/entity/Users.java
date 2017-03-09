@@ -28,29 +28,21 @@ public class Users implements Serializable {
 	@Column(name = "user_id")
 	private Integer userId;
 	@Column(name = "name")
-	@Size(min = 2, max = 30, message = "This is required field")
+	@Size(min = 5, max = 30, message = "This is required field min 5 symbols")
 	private String name;
 	@Column(name = "surname")
+	@Size(min = 5, max = 30, message = "This is required field min 5 symbols")
 	private String surname;
 	@Column(name = "middlename")
+	@Size(min = 5, max = 30, message = "This is required field min 5 symbols")
 	private String middlename;
-	@Pattern(regexp = "[+]{1}380[0-9]{9}", message = "Invalid phone format, should be as +380xxxxxxxxx")
-	@Column(name = "phone")
-	private String phone;
-	@Column(name = "homephone")
-	private String homephone;
-	@Column(name = "email")
-	@Pattern(regexp = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
-			+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$", message = "Invalid email")
-	private String email;
 	@Column(name = "login")
-	@Size(min = 2, max = 30, message = "This is required field")
+	@Size(min = 3, max = 30, message = "This is required field min 3 symbols")
+	@Pattern(regexp = "[A-Za-z]+", message = "Only English characters")
 	private String login;
 	@Column(name = "password")
-	@Size(min = 2, max = 30, message = "This is required field")
+	@Size(min = 5, max = 50, message = "This is required field and min 5 symbols")
 	private String password;
-	@Column(name = "address")
-	private String address;
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
 	private Collection<Contacts> contactsCollection;
 
@@ -89,30 +81,6 @@ public class Users implements Serializable {
 		this.middlename = middlename;
 	}
 
-	public String getPhone() {
-		return phone;
-	}
-
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
-
-	public String getHomephone() {
-		return homephone;
-	}
-
-	public void setHomephone(String homephone) {
-		this.homephone = homephone;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
 	public String getLogin() {
 		return login;
 	}
@@ -129,14 +97,6 @@ public class Users implements Serializable {
 		this.password = password;
 	}
 
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
 	public Collection<Contacts> getContactsCollection() {
 		return contactsCollection;
 	}
@@ -149,15 +109,11 @@ public class Users implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((address == null) ? 0 : address.hashCode());
 		result = prime * result + ((contactsCollection == null) ? 0 : contactsCollection.hashCode());
-		result = prime * result + ((email == null) ? 0 : email.hashCode());
-		result = prime * result + ((homephone == null) ? 0 : homephone.hashCode());
 		result = prime * result + ((login == null) ? 0 : login.hashCode());
 		result = prime * result + ((middlename == null) ? 0 : middlename.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
-		result = prime * result + ((phone == null) ? 0 : phone.hashCode());
 		result = prime * result + ((surname == null) ? 0 : surname.hashCode());
 		result = prime * result + ((userId == null) ? 0 : userId.hashCode());
 		return result;
@@ -172,25 +128,10 @@ public class Users implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Users other = (Users) obj;
-		if (address == null) {
-			if (other.address != null)
-				return false;
-		} else if (!address.equals(other.address))
-			return false;
 		if (contactsCollection == null) {
 			if (other.contactsCollection != null)
 				return false;
 		} else if (!contactsCollection.equals(other.contactsCollection))
-			return false;
-		if (email == null) {
-			if (other.email != null)
-				return false;
-		} else if (!email.equals(other.email))
-			return false;
-		if (homephone == null) {
-			if (other.homephone != null)
-				return false;
-		} else if (!homephone.equals(other.homephone))
 			return false;
 		if (login == null) {
 			if (other.login != null)
@@ -212,11 +153,6 @@ public class Users implements Serializable {
 				return false;
 		} else if (!password.equals(other.password))
 			return false;
-		if (phone == null) {
-			if (other.phone != null)
-				return false;
-		} else if (!phone.equals(other.phone))
-			return false;
 		if (surname == null) {
 			if (other.surname != null)
 				return false;
@@ -233,9 +169,8 @@ public class Users implements Serializable {
 	@Override
 	public String toString() {
 		return "Users [userId=" + userId + ", name=" + name + ", surname=" + surname + ", middlename=" + middlename
-				+ ", phone=" + phone + ", homephone=" + homephone + ", email=" + email + ", login=" + login
-				+ ", password=" + password + ", address=" + address + ", contactsCollection=" + contactsCollection
-				+ "]";
+				+ ", login=" + login + ", password=" + password + ", contactsCollection=" + contactsCollection + "]";
 	}
+	
 
 }
