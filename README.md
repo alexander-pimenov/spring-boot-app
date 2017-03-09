@@ -3,7 +3,7 @@ phone-book
 ---
 Simple spring-boot application
 ---
-User can register and crete phone contacts. He can also edit and delete them.
+User can register and crete phone contacts. He can also edit and delete them. There is filter by name, surname and phone
 ----
 Technologies: Spring MVC, Spring Boot, jsp, Hibernate, JPA, JUnit, Mockito, Bootstrap
 
